@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 import 'package:devin/pages/bottom_bar.dart';
+=======
+>>>>>>> 23490b0629cf7d39a362a361579380dd1d242f99
 import 'package:devin/pages/qr_scanner_page.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
@@ -136,8 +139,12 @@ class _LoginPageState extends State<LoginPage> {
                       Navigator.push(
                         context,
                         PageTransition(
+<<<<<<< HEAD
                           child: BottomBar(),
                           // child: const QRScannerPage(),
+=======
+                          child: const QRScannerPage(),
+>>>>>>> 23490b0629cf7d39a362a361579380dd1d242f99
                           type: PageTransitionType.rightToLeft,
                         ),
                       );
