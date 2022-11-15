@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:devin/common/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -15,16 +17,22 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  void nextScreen() {
-    Future.delayed(const Duration(milliseconds: 5000), () {
-      Navigator.pushReplacement(
-        context,
-        PageTransition(
-          child: const OnBoardingScreen(),
-          type: PageTransitionType.rightToLeft,
-        ),
-      );
-    });
+  nextScreen() {
+    var duration = const Duration(seconds: 5);
+    return Timer(
+      duration,
+      route,
+    );
+  }
+
+  route() {
+    Navigator.pushReplacement(
+      context,
+      PageTransition(
+        child: const OnBoardingScreen(),
+        type: PageTransitionType.rightToLeft,
+      ),
+    );
   }
 
   @override
@@ -68,7 +76,11 @@ class _SplashPageState extends State<SplashPage> {
               0.30,
             ],
           ),
-          size: const Size(double.infinity, 400),
+          waveAmplitude: 0,
+          size: const Size(
+            double.infinity,
+            400,
+          ),
         ),
       ),
     );

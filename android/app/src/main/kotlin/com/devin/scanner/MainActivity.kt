@@ -1,4 +1,4 @@
-package com.alyproject.devin
+package com.devin.scanner
 
 import io.flutter.embedding.android.FlutterActivity
 
