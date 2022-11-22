@@ -1,9 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.alyproject.devin">
+    package="com.devin.scanner">
    <application
         android:label="Devin Scanner"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/devin">
         <activity
             android:name=".MainActivity"
             android:exported="true"

@@ -1,3 +1,4 @@
+import 'package:devin/common/dimension.dart';
 import 'package:devin/pages/daftar.dart';
 import 'package:devin/pages/masuk.dart';
 import 'package:flutter/material.dart';
@@ -349,6 +350,7 @@ class OnBoardingContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Dimension(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -371,7 +373,7 @@ class OnBoardingContent extends StatelessWidget {
                 textAlign: textAlign,
                 style: primaryTextStyle.copyWith(
                   fontWeight: fontWeight,
-                  fontSize: 38,
+                  fontSize: Dimension.boxHeight! * 4,
                 ),
               )
             : Center(
@@ -380,7 +382,7 @@ class OnBoardingContent extends StatelessWidget {
                   textAlign: textAlign,
                   style: primaryTextStyle.copyWith(
                     fontWeight: fontWeight,
-                    fontSize: 38,
+                    fontSize: Dimension.boxHeight! * 4,
                   ),
                 ),
               ),
@@ -390,7 +392,7 @@ class OnBoardingContent extends StatelessWidget {
                 textAlign: textAlign,
                 style: primaryTextStyle.copyWith(
                   fontWeight: fontWeight2,
-                  fontSize: 38,
+                  fontSize: Dimension.boxHeight! * 4,
                 ),
               )
             : const SizedBox(),
@@ -400,7 +402,7 @@ class OnBoardingContent extends StatelessWidget {
                 textAlign: textAlign,
                 style: primaryTextStyle.copyWith(
                   fontWeight: fontWeight,
-                  fontSize: 38,
+                  fontSize: Dimension.boxHeight! * 4,
                 ),
               )
             : const SizedBox(),
@@ -412,7 +414,8 @@ class OnBoardingContent extends StatelessWidget {
             description,
             textAlign: TextAlign.center,
             style: primaryTextStyle.copyWith(
-              fontSize: 18,
+              fontSize: Dimension.boxHeight! * 2,
+              color: grey,
               fontWeight: light,
             ),
           ),

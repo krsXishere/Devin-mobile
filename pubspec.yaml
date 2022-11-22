@@ -43,11 +43,9 @@ dependencies:
   flutter_svg: ^1.0.3
   google_fonts: ^3.0.1
   wave: ^0.2.2
-<<<<<<< HEAD
   google_nav_bar: ^5.0.6
   line_icons: ^2.0.1
-=======
->>>>>>> 23490b0629cf7d39a362a361579380dd1d242f99
+  change_app_package_name: ^1.1.0
 
 dev_dependencies:
   flutter_test:
