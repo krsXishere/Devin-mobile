@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:page_transition/page_transition.dart';
 
+import 'bottom_bar.dart';
+
 class SpesificationPage extends StatefulWidget {
   final String? pcName, os, processor, ram, vgaCard, storage, lab;
   final int? table;
@@ -46,7 +48,7 @@ class _SpesificationPageState extends State<SpesificationPage> {
             Navigator.pushReplacement(
               context,
               PageTransition(
-                child: const QRScannerPage(),
+                child: BottomBar(),
                 type: PageTransitionType.leftToRight,
               ),
             );

@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:devin/common/theme.dart';
 import 'package:devin/pages/spesification_page.dart';
 import 'package:flutter/material.dart';
+import 'package:line_icons/line_icon.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -23,6 +25,8 @@ class _QRScannerPageState extends State<QRScannerPage> {
   SpesificationModel? spesificationModel;
   String? id;
   bool isLoading = false;
+  bool flashOn = false;
+  bool cameraFront = false;
 
   Future<void> getData() async {
     SpesificationModel.sendRequest(id).then((value) {
@@ -42,8 +46,7 @@ class _QRScannerPageState extends State<QRScannerPage> {
         setState(() {
           isLoading = false;
         });
-        qrViewController?.dispose();
-        Navigator.pushReplacement(
+        Navigator.push(
           context,
           PageTransition(
             child: SpesificationPage(
@@ -100,19 +103,9 @@ class _QRScannerPageState extends State<QRScannerPage> {
   }
 
   @override
-  void reassemble() {
-    super.reassemble();
-    if (Platform.isAndroid) {
-      qrViewController!.pauseCamera();
-    } else if (Platform.isIOS) {
-      qrViewController!.resumeCamera();
-    }
-  }
-
-  @override
   void dispose() {
     super.dispose();
-    qrViewController?.dispose();
+    qrViewController?.stopCamera();
   }
 
   @override
@@ -150,6 +143,42 @@ class _QRScannerPageState extends State<QRScannerPage> {
                   borderLength: 30,
                   borderWidth: 10,
                   cutOutSize: scanArea,
+                ),
+              ),
+              Positioned(
+                top: 10,
+                right: 10,
+                child: Row(
+                  children: [
+                    IconButton(
+                      color: white,
+                      onPressed: () {
+                        setState(() {
+                          qrViewController!.flipCamera();
+                          cameraFront = !cameraFront;
+                        });
+                      },
+                      icon: Icon(
+                        cameraFront == false
+                            ? Icons.camera_front_rounded
+                            : Icons.camera_rear_rounded,
+                      ),
+                    ),
+                    IconButton(
+                      color: white,
+                      onPressed: () {
+                        setState(() {
+                          qrViewController!.toggleFlash();
+                          flashOn = !flashOn;
+                        });
+                      },
+                      icon: Icon(
+                        flashOn == false
+                            ? Icons.flash_off_rounded
+                            : Icons.flash_on_rounded,
+                      ),
+                    ),
+                  ],
                 ),
               ),
               result != null
@@ -208,6 +237,7 @@ class _QRScannerPageState extends State<QRScannerPage> {
                                 ),
                               ),
                               child: CircularProgressIndicator(
+                                strokeWidth: 3.0,
                                 color: white,
                               ),
                             ),
