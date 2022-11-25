@@ -1,4 +1,5 @@
 import 'package:devin/common/theme.dart';
+import 'package:devin/pages/qr_scanner_page.dart';
 import 'package:devin/pages/splash_page.dart';
 import 'package:flutter/material.dart';
 
@@ -162,7 +163,12 @@ class _RegisterPageState extends State<RegisterPage> {
                   height: 60,
                   width: MediaQuery.of(context).size.width,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => const QRScannerPage()));
+                    },
                     style: ElevatedButton.styleFrom(
                       primary: primaryYellow,
                       shape: RoundedRectangleBorder(

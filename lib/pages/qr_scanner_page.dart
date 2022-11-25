@@ -1,10 +1,6 @@
-import 'dart:io';
-
 import 'package:devin/common/theme.dart';
 import 'package:devin/pages/spesification_page.dart';
 import 'package:flutter/material.dart';
-import 'package:line_icons/line_icon.dart';
-import 'package:line_icons/line_icons.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -19,7 +15,7 @@ class QRScannerPage extends StatefulWidget {
 }
 
 class _QRScannerPageState extends State<QRScannerPage> {
-  final GlobalKey _globalKey = GlobalKey();
+  final GlobalKey _globalKey = GlobalKey(debugLabel: 'QR');
   QRViewController? qrViewController;
   Barcode? result;
   SpesificationModel? spesificationModel;
@@ -50,14 +46,7 @@ class _QRScannerPageState extends State<QRScannerPage> {
           context,
           PageTransition(
             child: SpesificationPage(
-              pcName: spesificationModel?.pcName,
-              os: spesificationModel?.os,
-              processor: spesificationModel?.processor,
-              ram: spesificationModel?.ram,
-              vgaCard: spesificationModel?.vgaCard,
-              storage: spesificationModel?.storage,
-              lab: spesificationModel?.lab,
-              table: spesificationModel?.table,
+              id: "",
             ),
             type: PageTransitionType.rightToLeft,
           ),
@@ -70,8 +59,33 @@ class _QRScannerPageState extends State<QRScannerPage> {
     });
   }
 
+  Future<void> navigate() async {
+    setState(() {
+      isLoading = true;
+    });
+
+    Future.delayed(const Duration(seconds: 2), () {
+      Navigator.push(
+        context,
+        PageTransition(
+          child: SpesificationPage(
+            id: id.toString(),
+          ),
+          type: PageTransitionType.rightToLeft,
+        ),
+      );
+
+      setState(() {
+        isLoading = false;
+      });
+    });
+  }
+
   void qr(QRViewController controller) {
-    qrViewController = controller;
+    setState(() {
+      qrViewController = controller;
+    });
+
     controller.scannedDataStream.listen((event) {
       setState(() {
         result = event;
@@ -81,6 +95,9 @@ class _QRScannerPageState extends State<QRScannerPage> {
         trimResultQRCode();
       }
     });
+
+    qrViewController?.pauseCamera();
+    qrViewController?.resumeCamera();
   }
 
   Future<PermissionStatus> getCameraPermission() async {
@@ -102,17 +119,17 @@ class _QRScannerPageState extends State<QRScannerPage> {
     return codeSubbed2;
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-    qrViewController?.stopCamera();
-  }
+  // @override
+  // void dispose() {
+  //   super.dispose();
+  //   qrViewController?.stopCamera();
+  // }
 
   @override
   void initState() {
     super.initState();
     getCameraPermission();
-    spesificationModel;
+    // spesificationModel;
   }
 
   @override
@@ -202,7 +219,7 @@ class _QRScannerPageState extends State<QRScannerPage> {
                             width: MediaQuery.of(context).size.width,
                             child: ElevatedButton(
                               onPressed: () {
-                                getData();
+                                navigate();
                               },
                               style: ElevatedButton.styleFrom(
                                 primary: primaryYellow,
@@ -227,9 +244,7 @@ class _QRScannerPageState extends State<QRScannerPage> {
                             height: 60,
                             width: MediaQuery.of(context).size.width,
                             child: ElevatedButton(
-                              onPressed: () {
-                                getData();
-                              },
+                              onPressed: () {},
                               style: ElevatedButton.styleFrom(
                                 primary: primaryYellow,
                                 shape: RoundedRectangleBorder(

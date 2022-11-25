@@ -44,9 +44,6 @@ class SpesificationModel {
     );
     var jsonObject = jsonDecode(repsonse.body);
     var data = (jsonObject as Map<String, dynamic>);
-    if (repsonse.statusCode == 200) {
-      print(": " + data.toString());
-    }
     return SpesificationModel.getData(data);
   }
 }
