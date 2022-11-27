@@ -1,9 +1,10 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import '../common/global.dart' as global;
 
 class SpesificationModel {
-  String? pcName, os, processor, ram, vgaCard, storage, lab, code;
-  int? id, table;
+  String pcName, os, processor, ram, vgaCard, storage, lab, table;
+  int id, code;
 
   SpesificationModel({
     required this.id,
@@ -34,7 +35,7 @@ class SpesificationModel {
   }
 
   static Future<SpesificationModel> sendRequest(String? id) async {
-    String apiURL = "http://192.100.103.58:8000/api/spesifikasi/$id";
+    String apiURL = "${global.apiHosted}/spesifikasi/$id";
     var repsonse = await http.get(
       Uri.parse(apiURL),
       headers: {

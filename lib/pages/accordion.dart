@@ -1,5 +1,6 @@
 import 'package:devin/common/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Accordion extends StatefulWidget {
   final String title;
@@ -16,13 +17,18 @@ class _AccordionState extends State<Accordion> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 0,
       child: Column(children: [
         ListTile(
           title: Row(
             children: [
-              const Icon(Icons.info_outline),
+              SvgPicture.asset(
+                "assets/svg/information.svg",
+                height: 30,
+                width: 30,
+              ),
               const SizedBox(
-                width: 10,
+                width: 5,
               ),
               Text(
                 widget.title,
@@ -34,8 +40,17 @@ class _AccordionState extends State<Accordion> {
             ],
           ),
           trailing: IconButton(
-            icon: Icon(
-                _showContent ? Icons.arrow_drop_up : Icons.arrow_drop_down),
+            icon: _showContent
+                ? SvgPicture.asset(
+                    "assets/svg/caret-up.svg",
+                    height: 30,
+                    width: 30,
+                  )
+                : SvgPicture.asset(
+                    "assets/svg/caret-down.svg",
+                    height: 30,
+                    width: 30 ,
+                  ),
             onPressed: () {
               setState(() {
                 _showContent = !_showContent;

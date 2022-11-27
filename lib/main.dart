@@ -10,6 +10,12 @@ void main() {
     yield LicenseEntryWithLineBreaks(['google_fonts'], license);
   });
 
+  WidgetsFlutterBinding.ensureInitialized();
+
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
+
   runApp(
     const ProviderScope(
       child: MyApp(),

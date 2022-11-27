@@ -1,6 +1,5 @@
 import 'package:devin/common/theme.dart';
 import 'package:devin/pages/qr_scanner_page.dart';
-import 'package:devin/pages/splash_page.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -170,7 +169,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               builder: (_) => const QRScannerPage()));
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: primaryYellow,
+                      backgroundColor: primaryYellow,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),

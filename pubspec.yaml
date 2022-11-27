@@ -48,6 +48,13 @@ dependencies:
   change_app_package_name: ^1.1.0
   dio: ^4.0.6
   flutter_riverpod: ^2.1.1
+  shared_preferences: ^2.0.15
+  weather: ^2.0.1
+  weather_icons: ^3.0.0
+  location: ^4.4.0
+  geocoding: ^2.0.5
+  shimmer_animation: ^2.1.0+1
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
@@ -75,6 +82,7 @@ flutter:
   assets:
     - assets/png/
     - assets/svg/
+    - assets/gif/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -84,7 +92,7 @@ flutter:
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
+  # "family" key with the font family name, and a "fopnts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
   # fonts:

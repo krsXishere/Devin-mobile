@@ -1,24 +1,22 @@
 import 'package:devin/common/theme.dart';
-import 'package:devin/pages/accountPage.dart';
+import 'package:devin/pages/account_page.dart';
+import 'package:devin/pages/dashboard_page.dart';
 import 'package:devin/pages/qr_scanner_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
 
 class BottomBar extends StatefulWidget {
+  const BottomBar({super.key});
+
   @override
   _BottomBarState createState() => _BottomBarState();
 }
 
 class _BottomBarState extends State<BottomBar> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
   static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Home',
-      style: optionStyle,
-    ),
+    DashboardPage(),
     QRScannerPage(),
     ProfilePage(),
   ];

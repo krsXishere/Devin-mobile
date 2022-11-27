@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:devin/common/theme.dart';
 import 'package:devin/pages/spesification_page.dart';
 import 'package:flutter/material.dart';
@@ -35,18 +37,17 @@ class _QRScannerPageState extends State<QRScannerPage> {
       isLoading = true;
     });
 
-    print("Heeh " + id.toString());
-
     Future.delayed(const Duration(seconds: 2), () {
-      if (spesificationModel?.code == "200") {
+      if (spesificationModel?.code == 200) {
         setState(() {
           isLoading = false;
         });
+
         Navigator.push(
           context,
           PageTransition(
             child: SpesificationPage(
-              id: "",
+              id: id.toString(),
             ),
             type: PageTransitionType.rightToLeft,
           ),
@@ -64,7 +65,12 @@ class _QRScannerPageState extends State<QRScannerPage> {
       isLoading = true;
     });
 
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(milliseconds: 500), () {
+      setState(() {
+        isLoading = false;
+      });
+      log("ID: " + id.toString());
+
       Navigator.push(
         context,
         PageTransition(
@@ -74,10 +80,6 @@ class _QRScannerPageState extends State<QRScannerPage> {
           type: PageTransitionType.rightToLeft,
         ),
       );
-
-      setState(() {
-        isLoading = false;
-      });
     });
   }
 
@@ -116,14 +118,16 @@ class _QRScannerPageState extends State<QRScannerPage> {
     String codeSubbed = code.substring(code.lastIndexOf("/"));
     String codeSubbed2 = codeSubbed.substring(1);
     id = codeSubbed2;
+
     return codeSubbed2;
   }
 
-  // @override
-  // void dispose() {
-  //   super.dispose();
-  //   qrViewController?.stopCamera();
-  // }
+  @override
+  void dispose() {
+    super.dispose();
+    qrViewController?.pauseCamera();
+    qrViewController?.dispose();
+  }
 
   @override
   void initState() {
@@ -222,7 +226,7 @@ class _QRScannerPageState extends State<QRScannerPage> {
                                 navigate();
                               },
                               style: ElevatedButton.styleFrom(
-                                primary: primaryYellow,
+                                backgroundColor: primaryYellow,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30),
                                 ),
@@ -246,7 +250,7 @@ class _QRScannerPageState extends State<QRScannerPage> {
                             child: ElevatedButton(
                               onPressed: () {},
                               style: ElevatedButton.styleFrom(
-                                primary: primaryYellow,
+                                backgroundColor: primaryYellow,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30),
                                 ),

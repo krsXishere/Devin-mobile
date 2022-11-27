@@ -1,5 +1,5 @@
 import 'package:devin/common/theme.dart';
-import 'package:devin/pages/editAccountPage.dart';
+import 'package:devin/pages/edit_account_page.dart';
 import 'package:flutter/material.dart';
 import './accordion.dart';
 
@@ -115,7 +115,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => EditProfil(),
+                      builder: (context) => const EditProfil(),
                     ),
                   );
                 },
@@ -166,7 +166,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         fontSize: 16,
                         fontWeight: regular,
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -215,7 +215,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           ElevatedButton(
                             onPressed: () {},
                             style: ElevatedButton.styleFrom(
-                              primary: primaryYellow,
+                              backgroundColor: primaryYellow,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30),
                               ),

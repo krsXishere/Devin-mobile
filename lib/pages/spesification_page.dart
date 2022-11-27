@@ -3,25 +3,13 @@ import 'package:devin/pages/qr_scanner_page.dart';
 import 'package:devin/providers/spesification_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:page_transition/page_transition.dart';
-import 'bottom_bar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class SpesificationPage extends ConsumerStatefulWidget {
-  //final String? pcName, os, processor, ram, vgaCard, storage, lab;
   final String id;
-  //final int? table;
 
   const SpesificationPage({
     Key? key,
-    // required this.pcName,
-    // required this.os,
-    // required this.processor,
-    // required this.ram,
-    // required this.vgaCard,
-    // required this.storage,
-    // required this.lab,
-    // required this.table,
     required this.id,
   }) : super(key: key);
 
@@ -32,7 +20,6 @@ class SpesificationPage extends ConsumerStatefulWidget {
 class _SpesificationPageState extends ConsumerState<SpesificationPage> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
@@ -49,13 +36,7 @@ class _SpesificationPageState extends ConsumerState<SpesificationPage> {
         elevation: 0,
         leading: IconButton(
           onPressed: () {
-            Navigator.pushReplacement(
-              context,
-              PageTransition(
-                child: BottomBar(),
-                type: PageTransitionType.leftToRight,
-              ),
-            );
+            Navigator.pop(context);
           },
           icon: const Icon(
             Icons.arrow_back_ios,
@@ -101,7 +82,7 @@ class _SpesificationPageState extends ConsumerState<SpesificationPage> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    "${data!.pcName}",
+                                    "${data?.pcName}",
                                     style: primaryTextStyle.copyWith(
                                       color: white,
                                       fontWeight: bold,
@@ -131,7 +112,7 @@ class _SpesificationPageState extends ConsumerState<SpesificationPage> {
                                   Flexible(
                                     fit: FlexFit.tight,
                                     child: Text(
-                                      "${data.os}",
+                                      "${data?.os}",
                                       style: primaryTextStyle.copyWith(
                                         color: white,
                                         fontSize: 18,
@@ -154,7 +135,7 @@ class _SpesificationPageState extends ConsumerState<SpesificationPage> {
                                   ),
                                   Flexible(
                                     child: Text(
-                                      "${data.processor}",
+                                      "${data?.processor}",
                                       style: primaryTextStyle.copyWith(
                                         color: white,
                                         fontSize: 18,
@@ -177,7 +158,7 @@ class _SpesificationPageState extends ConsumerState<SpesificationPage> {
                                   ),
                                   Flexible(
                                     child: Text(
-                                      "${data.ram}",
+                                      "${data?.ram}",
                                       style: primaryTextStyle.copyWith(
                                         color: white,
                                         fontSize: 18,
@@ -201,7 +182,7 @@ class _SpesificationPageState extends ConsumerState<SpesificationPage> {
                                   ),
                                   Flexible(
                                     child: Text(
-                                      "${data.vgaCard}",
+                                      "${data?.vgaCard}",
                                       style: primaryTextStyle.copyWith(
                                         color: white,
                                         fontSize: 18,
@@ -225,7 +206,7 @@ class _SpesificationPageState extends ConsumerState<SpesificationPage> {
                                   ),
                                   Flexible(
                                     child: Text(
-                                      "${data.storage}",
+                                      "${data?.storage}",
                                       style: primaryTextStyle.copyWith(
                                         color: white,
                                         fontSize: 18,
@@ -249,7 +230,7 @@ class _SpesificationPageState extends ConsumerState<SpesificationPage> {
                                   ),
                                   Flexible(
                                     child: Text(
-                                      "${data.lab}",
+                                      "${data?.lab}",
                                       style: primaryTextStyle.copyWith(
                                         color: white,
                                         fontSize: 18,
@@ -273,7 +254,7 @@ class _SpesificationPageState extends ConsumerState<SpesificationPage> {
                                   ),
                                   Flexible(
                                     child: Text(
-                                      "${data.table}",
+                                      "${data?.table}",
                                       style: primaryTextStyle.copyWith(
                                         color: white,
                                         fontSize: 18,
@@ -305,7 +286,7 @@ class _SpesificationPageState extends ConsumerState<SpesificationPage> {
                           );
                         },
                         style: ElevatedButton.styleFrom(
-                          primary: primaryYellow,
+                          backgroundColor: primaryYellow,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30),
                           ),

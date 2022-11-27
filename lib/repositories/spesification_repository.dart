@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import '../models/spesification_model.dart';
+import '../common/global.dart' as global;
 
 class SpesificationRepository {
   final Dio? _dio;
@@ -12,8 +15,10 @@ class SpesificationRepository {
     );
 
     try {
-      String apiURL = "http://192.100.103.58:8000/api/spesifikasi/$id";
+      String apiURL = "${global.apiHosted}/spesifikasi/$id";
       var response = await (_dio ?? Dio()).get(apiURL);
+      log("${response.data}");
+
       return SpesificationModel.getData(response.data);
     } catch (e) {
       return null;

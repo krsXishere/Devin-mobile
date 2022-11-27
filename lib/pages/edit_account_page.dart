@@ -29,7 +29,7 @@ class _EditProfilState extends State<EditProfil> {
             child: ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
-                primary: primaryYellow,
+                backgroundColor: primaryYellow,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
