@@ -1,8 +1,5 @@
 import 'package:devin/common/dimension.dart';
-import 'package:devin/pages/bottom_bar.dart';
-// import 'package:devin/pages/daftar.dart';
-// import 'package:devin/pages/masuk.dart';
-// import 'package:devin/pages/qr_scanner_page.dart';
+import 'package:devin/pages/dashboard_page.dart';
 import 'package:flutter/material.dart';
 import 'package:devin/common/theme.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -21,8 +18,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   bool isActive = false;
   int _pageIndex = 0;
 
-  void storeOnBoardingInfo() async {
-    int isViewed = 1;
+  storeOnBoardingInfo() async {
+    int isViewed = 0;
     SharedPreferences preferences = await SharedPreferences.getInstance();
     await preferences.setInt("onBoarding", isViewed);
   }
@@ -103,12 +100,12 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                 height: 59,
                                 // width: MediaQuery.of(context).size.width,
                                 child: ElevatedButton(
-                                  onPressed: () {
-                                    storeOnBoardingInfo();
-                                    Navigator.push(
+                                  onPressed: () async {
+                                    await storeOnBoardingInfo();
+                                    Navigator.pushReplacement(
                                       context,
                                       PageTransition(
-                                        child: const BottomBar(),
+                                        child: const DashboardPage(),
                                         type: PageTransitionType.rightToLeft,
                                       ),
                                     );

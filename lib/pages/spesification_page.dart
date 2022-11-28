@@ -28,12 +28,6 @@ class _SpesificationPageState extends ConsumerState<SpesificationPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text(
-          "Spesifikasi Komputer",
-          style: primaryTextStyle,
-        ),
-        backgroundColor: Colors.white,
-        elevation: 0,
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
@@ -42,6 +36,16 @@ class _SpesificationPageState extends ConsumerState<SpesificationPage> {
             Icons.arrow_back_ios,
           ),
           color: black,
+        ),
+        centerTitle: true,
+        backgroundColor: white,
+        elevation: 0,
+        title: Text(
+          "Pengaturan",
+          style: primaryTextStyle.copyWith(
+            fontWeight: bold,
+            fontSize: 20,
+          ),
         ),
       ),
       body: SafeArea(

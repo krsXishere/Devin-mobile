@@ -166,40 +166,62 @@ class _QRScannerPageState extends State<QRScannerPage> {
                   cutOutSize: scanArea,
                 ),
               ),
-              Positioned(
-                top: 10,
-                right: 10,
-                child: Row(
-                  children: [
-                    IconButton(
-                      color: white,
-                      onPressed: () {
-                        setState(() {
-                          qrViewController!.flipCamera();
-                          cameraFront = !cameraFront;
-                        });
-                      },
-                      icon: Icon(
-                        cameraFront == false
-                            ? Icons.camera_front_rounded
-                            : Icons.camera_rear_rounded,
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 10,
+                  left: 10,
+                  right: 10,
+                ),
+                child: Align(
+                  alignment: AlignmentDirectional.topCenter,
+                  child: Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: const Icon(
+                          Icons.arrow_back_ios,
+                        ),
+                        color: white,
                       ),
-                    ),
-                    IconButton(
-                      color: white,
-                      onPressed: () {
-                        setState(() {
-                          qrViewController!.toggleFlash();
-                          flashOn = !flashOn;
-                        });
-                      },
-                      icon: Icon(
-                        flashOn == false
-                            ? Icons.flash_off_rounded
-                            : Icons.flash_on_rounded,
-                      ),
-                    ),
-                  ],
+                      const Spacer(),
+                      SizedBox(
+                        child: Row(
+                          children: [
+                            IconButton(
+                              color: white,
+                              onPressed: () {
+                                setState(() {
+                                  qrViewController!.flipCamera();
+                                  cameraFront = !cameraFront;
+                                });
+                              },
+                              icon: Icon(
+                                cameraFront == false
+                                    ? Icons.camera_front_rounded
+                                    : Icons.camera_rear_rounded,
+                              ),
+                            ),
+                            IconButton(
+                              color: white,
+                              onPressed: () {
+                                setState(() {
+                                  qrViewController!.toggleFlash();
+                                  flashOn = !flashOn;
+                                });
+                              },
+                              icon: Icon(
+                                flashOn == false
+                                    ? Icons.flash_off_rounded
+                                    : Icons.flash_on_rounded,
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
               result != null

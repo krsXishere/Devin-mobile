@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'services/location_service.dart';
 
 void main() {
   LicenseRegistry.addLicense(() async* {
@@ -31,6 +32,28 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  LocationService locationService = LocationService();
+  String addres = "";
+  double? latitude = 0;
+  double? longitude = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    locationService.locationStream.listen((location) {
+      setState(() {
+        latitude = location.latitude;
+        longitude = location.longitude;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    locationService.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -39,6 +62,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      // themeMode: ThemeMode.system,
       home: const SplashPage(),
     );
   }

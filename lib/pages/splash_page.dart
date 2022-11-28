@@ -35,7 +35,7 @@ class _SplashPageState extends State<SplashPage> {
     Navigator.pushReplacement(
       context,
       PageTransition(
-        child: isViewed == 0 ? const OnBoardingScreen() : const DashboardPage(),
+        child: isViewed != 0 ? const OnBoardingScreen() : const DashboardPage(),
         type: PageTransitionType.rightToLeft,
       ),
     );
@@ -81,7 +81,7 @@ class _SplashPageState extends State<SplashPage> {
               0.30,
             ],
           ),
-          waveAmplitude: 0,
+          // waveAmplitude: 0,
           size: const Size(
             double.infinity,
             400,

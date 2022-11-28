@@ -514,37 +514,27 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
                       children: [
                         Column(
                           children: [
-                            Container(
-                              height: height / 4,
-                              width: width / 2,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(25),
-                                color: white,
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.4),
-                                    spreadRadius: 2,
-                                    blurRadius: 3,
-                                    offset: const Offset(0, 3),
-                                  ),
-                                ],
-                              ),
-                              child: Row(
-                                children: [
-                                  Container(
-                                    height: 75,
-                                    width: 4,
-                                    decoration: BoxDecoration(
-                                      color: primaryYellow,
-                                      borderRadius: const BorderRadius.only(
-                                        topRight: Radius.circular(5),
-                                        bottomRight: Radius.circular(5),
+                            Stack(
+                              alignment: AlignmentDirectional.topCenter,
+                              children: [
+                                Container(
+                                  height: height / 4,
+                                  width: width / 2,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(25),
+                                    color: white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey.withOpacity(0.4),
+                                        spreadRadius: 2,
+                                        blurRadius: 3,
+                                        offset: const Offset(0, 3),
                                       ),
-                                    ),
+                                    ],
                                   ),
-                                  Padding(
+                                  child: Padding(
                                     padding: const EdgeInsets.only(
-                                      top: 60,
+                                      top: 30,
                                       left: 10,
                                     ),
                                     child: Column(
@@ -554,7 +544,7 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
                                         Text(
                                           "LAB 1",
                                           style: primaryTextStyle.copyWith(
-                                            fontSize: 20,
+                                            fontSize: 22,
                                             fontWeight: bold,
                                             color: black,
                                           ),
@@ -565,13 +555,22 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
                                         ref
                                             .watch(countPCHostedProvider(1))
                                             .when(
-                                              data: (data) => Text(
-                                                "Jumlah PC: ${data?.data}",
-                                                style:
-                                                    primaryTextStyle.copyWith(
-                                                  fontSize: 14,
-                                                  fontWeight: medium,
-                                                  color: greySecond,
+                                              data: (data) => Container(
+                                                padding:
+                                                    const EdgeInsets.all(20),
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                  color: primaryYellow,
+                                                ),
+                                                child: Text(
+                                                  "${data?.data}",
+                                                  style:
+                                                      primaryTextStyle.copyWith(
+                                                    fontSize: 20,
+                                                    fontWeight: medium,
+                                                    color: white,
+                                                  ),
                                                 ),
                                               ),
                                               error: (error, stackTrace) =>
@@ -589,11 +588,11 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
                                                     top: 3),
                                                 child: ClipRRect(
                                                   borderRadius:
-                                                      BorderRadius.circular(3),
+                                                      BorderRadius.circular(10),
                                                   child: Shimmer(
                                                     child: const SizedBox(
-                                                      height: 10,
-                                                      width: 70,
+                                                      height: 64,
+                                                      width: 51,
                                                     ),
                                                     color: grey,
                                                   ),
@@ -603,15 +602,134 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
                                       ],
                                     ),
                                   ),
-                                ],
-                              ),
+                                ),
+                                Container(
+                                  width: width / 8,
+                                  height: 5,
+                                  decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.vertical(
+                                      bottom: Radius.circular(5),
+                                    ),
+                                    color: primaryYellow,
+                                  ),
+                                ),
+                              ],
                             ),
                             const SizedBox(
                               height: 20,
                             ),
+                            Stack(
+                              alignment: AlignmentDirectional.topCenter,
+                              children: [
+                                Container(
+                                  height: height / 4,
+                                  width: width / 2,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(25),
+                                    color: white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey.withOpacity(0.4),
+                                        spreadRadius: 2,
+                                        blurRadius: 3,
+                                        offset: const Offset(0, 3),
+                                      ),
+                                    ],
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                      top: 30,
+                                      left: 10,
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "LAB 3",
+                                          style: primaryTextStyle.copyWith(
+                                            fontSize: 22,
+                                            fontWeight: bold,
+                                            color: black,
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 5,
+                                        ),
+                                        ref
+                                            .watch(countPCHostedProvider(3))
+                                            .when(
+                                              data: (data) => Container(
+                                                padding:
+                                                    const EdgeInsets.all(20),
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                  color: primaryYellow,
+                                                ),
+                                                child: Text(
+                                                  "${data?.data}",
+                                                  style:
+                                                      primaryTextStyle.copyWith(
+                                                    fontSize: 20,
+                                                    fontWeight: medium,
+                                                    color: white,
+                                                  ),
+                                                ),
+                                              ),
+                                              error: (error, stackTrace) =>
+                                                  Text(
+                                                "Jumlah PC: $error",
+                                                style:
+                                                    primaryTextStyle.copyWith(
+                                                  fontSize: 14,
+                                                  fontWeight: medium,
+                                                  color: greySecond,
+                                                ),
+                                              ),
+                                              loading: () => Padding(
+                                                padding: const EdgeInsets.only(
+                                                    top: 3),
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                  child: Shimmer(
+                                                    child: const SizedBox(
+                                                      height: 64,
+                                                      width: 51,
+                                                    ),
+                                                    color: grey,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  width: width / 8,
+                                  height: 5,
+                                  decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.vertical(
+                                      bottom: Radius.circular(5),
+                                    ),
+                                    color: primaryYellow,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          width: width / 20,
+                        ),
+                        Stack(
+                          alignment: AlignmentDirectional.topCenter,
+                          children: [
                             Container(
-                              height: height / 4,
-                              width: width / 2,
+                              height: height / 3,
+                              width: width / 2.8,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(25),
                                 color: white,
@@ -624,119 +742,9 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
                                   ),
                                 ],
                               ),
-                              child: Row(
-                                children: [
-                                  Container(
-                                    height: 75,
-                                    width: 4,
-                                    decoration: BoxDecoration(
-                                      color: primaryYellow,
-                                      borderRadius: const BorderRadius.only(
-                                        topRight: Radius.circular(5),
-                                        bottomRight: Radius.circular(5),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                      top: 60,
-                                      left: 10,
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          "LAB 3",
-                                          style: primaryTextStyle.copyWith(
-                                            fontSize: 20,
-                                            fontWeight: bold,
-                                            color: black,
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          height: 5,
-                                        ),
-                                        ref
-                                            .watch(countPCHostedProvider(3))
-                                            .when(
-                                              data: (data) => Text(
-                                                "Jumlah PC: ${data?.data}",
-                                                style:
-                                                    primaryTextStyle.copyWith(
-                                                  fontSize: 14,
-                                                  fontWeight: medium,
-                                                  color: greySecond,
-                                                ),
-                                              ),
-                                              error: (error, stackTrace) =>
-                                                  Text(
-                                                "Jumlah PC: $error",
-                                                style:
-                                                    primaryTextStyle.copyWith(
-                                                  fontSize: 14,
-                                                  fontWeight: medium,
-                                                  color: greySecond,
-                                                ),
-                                              ),
-                                              loading: () => Padding(
-                                                padding: const EdgeInsets.only(
-                                                    top: 3),
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(3),
-                                                  child: Shimmer(
-                                                    child: const SizedBox(
-                                                      height: 10,
-                                                      width: 70,
-                                                    ),
-                                                    color: grey,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          width: width / 20,
-                        ),
-                        Container(
-                          height: height / 3,
-                          width: width / 2.8,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(25),
-                            color: white,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.4),
-                                spreadRadius: 2,
-                                blurRadius: 3,
-                                offset: const Offset(0, 3),
-                              ),
-                            ],
-                          ),
-                          child: Row(
-                            children: [
-                              Container(
-                                height: 75,
-                                width: 4,
-                                decoration: BoxDecoration(
-                                  color: primaryYellow,
-                                  borderRadius: const BorderRadius.only(
-                                    topRight: Radius.circular(5),
-                                    bottomRight: Radius.circular(5),
-                                  ),
-                                ),
-                              ),
-                              Padding(
+                              child: Padding(
                                 padding: const EdgeInsets.only(
-                                  top: 60,
+                                  top: 30,
                                   left: 10,
                                 ),
                                 child: Column(
@@ -745,7 +753,7 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
                                     Text(
                                       "LAB 2",
                                       style: primaryTextStyle.copyWith(
-                                        fontSize: 20,
+                                        fontSize: 22,
                                         fontWeight: bold,
                                         color: black,
                                       ),
@@ -754,12 +762,20 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
                                       height: 5,
                                     ),
                                     ref.watch(countPCHostedProvider(2)).when(
-                                          data: (data) => Text(
-                                            "Jumlah PC: ${data?.data}",
-                                            style: primaryTextStyle.copyWith(
-                                              fontSize: 14,
-                                              fontWeight: medium,
-                                              color: greySecond,
+                                          data: (data) => Container(
+                                            padding: const EdgeInsets.all(20),
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              color: primaryYellow,
+                                            ),
+                                            child: Text(
+                                              "${data?.data}",
+                                              style: primaryTextStyle.copyWith(
+                                                fontSize: 20,
+                                                fontWeight: medium,
+                                                color: white,
+                                              ),
                                             ),
                                           ),
                                           error: (error, stackTrace) => Text(
@@ -775,11 +791,11 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
                                                 const EdgeInsets.only(top: 3),
                                             child: ClipRRect(
                                               borderRadius:
-                                                  BorderRadius.circular(3),
+                                                  BorderRadius.circular(10),
                                               child: Shimmer(
                                                 child: const SizedBox(
-                                                  height: 10,
-                                                  width: 70,
+                                                  height: 64,
+                                                  width: 51,
                                                 ),
                                                 color: grey,
                                               ),
@@ -789,8 +805,18 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
                                   ],
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                            Container(
+                              width: width / 8,
+                              height: 5,
+                              decoration: BoxDecoration(
+                                borderRadius: const BorderRadius.vertical(
+                                  bottom: Radius.circular(5),
+                                ),
+                                color: primaryYellow,
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
@@ -801,22 +827,28 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        tooltip: "Scanner",
-        backgroundColor: primaryYellow,
-        hoverColor: white,
-        splashColor: primaryYellow,
-        onPressed: () {
-          Navigator.push(
-            context,
-            PageTransition(
-              child: const QRScannerPage(),
-              type: PageTransitionType.rightToLeft,
+      floatingActionButton: SizedBox(
+        height: 65,
+        width: 65,
+        child: FittedBox(
+          child: FloatingActionButton(
+            tooltip: "Scanner",
+            backgroundColor: primaryYellow,
+            hoverColor: white,
+            splashColor: primaryYellow,
+            onPressed: () {
+              Navigator.push(
+                context,
+                PageTransition(
+                  child: const QRScannerPage(),
+                  type: PageTransitionType.rightToLeft,
+                ),
+              );
+            },
+            child: const Icon(
+              Icons.qr_code_scanner_rounded,
             ),
-          );
-        },
-        child: const Icon(
-          Icons.qr_code_scanner_rounded,
+          ),
         ),
       ),
     );

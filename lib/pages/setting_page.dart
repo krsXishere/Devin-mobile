@@ -1,7 +1,6 @@
 import 'package:devin/common/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:line_icons/line_icon.dart';
 import 'package:line_icons/line_icons.dart';
 
 import 'accordion.dart';
@@ -93,7 +92,7 @@ class _SettingPageState extends State<SettingPage> {
                       size: 30,
                     ),
                     const SizedBox(
-                      width: 10,
+                      width: 7,
                     ),
                     Text(
                       "Mode Gelap",
@@ -106,12 +105,73 @@ class _SettingPageState extends State<SettingPage> {
                     Switch(
                       inactiveThumbColor: primaryYellow,
                       activeColor: blue,
-                      // inactiveThumbImage: AssetImage(""),
                       value: isActive,
                       onChanged: (bool onChanged) {
                         setState(() {
                           isActive = onChanged;
                         });
+
+                        showDialog(
+                          barrierDismissible: false,
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              actionsAlignment: MainAxisAlignment.center,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              title: Center(
+                                child: Text(
+                                  "Pemberitahuan",
+                                  style: primaryTextStyle.copyWith(
+                                    fontWeight: bold,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ),
+                              content: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Mode gelap akan segera hadir.",
+                                    style: primaryTextStyle.copyWith(
+                                      fontWeight: regular,
+                                      fontSize: 14,
+                                      color: greyThird,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              actions: [
+                                SizedBox(
+                                  width: 100,
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: primaryYellow,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        isActive = false;
+                                      });
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text(
+                                      "Oke",
+                                      style: primaryTextStyle.copyWith(
+                                        fontWeight: bold,
+                                        fontSize: 14,
+                                        color: white,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        );
                       },
                     ),
                   ],
